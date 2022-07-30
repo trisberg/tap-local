@@ -1,0 +1,59 @@
+profile: full
+shared:
+  ingress_domain: <<INGRESS_DOMAIN>>
+
+ceip_policy_disclosed: true
+buildservice:
+  kp_default_repository: index.docker.io/<<DOCKER_ID>>/build-service
+  kp_default_repository_username: <<DOCKER_ID>>
+  kp_default_repository_password: <<DOCKER_PASSWORD>>
+
+supply_chain: basic
+ootb_supply_chain_basic:
+  registry:
+    server: index.docker.io
+    repository: <<DOCKER_ID>>
+  gitops:
+    ssh_secret: ""
+
+tap_gui:
+  service_type: ClusterIP
+  app_config:
+    app:
+      baseUrl: http://tap-gui.<<INGRESS_DOMAIN>>
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/tanzu-demo/tap-gui-catalogs/blob/main/blank/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.<<INGRESS_DOMAIN>>
+      cors:
+        origin: http://tap-gui.<<INGRESS_DOMAIN>>
+      reading:
+        allow:
+        - host: "*.apps.<<INGRESS_DOMAIN>>"
+
+metadata_store:
+  app_service_type: ClusterIP
+
+contour:
+  envoy:
+    service:
+      type: LoadBalancer
+
+cnrs:
+  domain_name: apps.<<INGRESS_DOMAIN>>
+
+accelerator:
+  samples:
+    include: false
+  ingress:
+    include: true
+
+excluded_packages:
+- api-portal.tanzu.vmware.com
+- grype.scanning.apps.tanzu.vmware.com
+- learningcenter.tanzu.vmware.com
+- workshops.learningcenter.tanzu.vmware.com
+- scanning.apps.tanzu.vmware.com
+- tap-telemetry.tanzu.vmware.com
