@@ -145,3 +145,68 @@ kubectl apply -n accelerator-system -f https://raw.githubusercontent.com/sample-
 ## Setup the developer namespace
 
 Follow the installtion instructions to [Set up developer namespaces to use installed packages](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-set-up-namespaces.html)
+
+### Set env vars
+
+```
+docker_id=<<DOCKER_ID>>
+docker_password=<<DOCKER_PASSWORD>>
+your_namespace=<<YOUR_NAMESPACE>>
+```
+
+### Add registry credentials
+
+```
+tanzu secret registry add registry-credentials --server "https://index.docker.io/v1/" --username ${docker_id} --password ${docker_password} --namespace ${your_namespace}
+```
+
+### Add secrets, a service account, and RBAC rules
+
+```
+cat <<EOF | kubectl -n ${your_namespace} apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tap-registry
+  annotations:
+    secretgen.carvel.dev/image-pull-secret: ""
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: e30K
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: default
+secrets:
+  - name: registry-credentials
+imagePullSecrets:
+  - name: registry-credentials
+  - name: tap-registry
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default-permit-deliverable
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: deliverable
+subjects:
+  - kind: ServiceAccount
+    name: default
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default-permit-workload
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: workload
+subjects:
+  - kind: ServiceAccount
+    name: default
+EOF
+```
+
