@@ -142,6 +142,18 @@ tanzu package -n tap-install installed list
 kubectl apply -n accelerator-system -f https://raw.githubusercontent.com/sample-accelerators/metadata/main/sample-accelerators-1-2.yaml
 ```
 
+### Connect to the TAP systems
+
+You can access the TAP-GUI using a `tap-gui` prefix for the `shared.ingress_domain` like http://tap-gui.192.168.64.50.nip.io just use the Guest account.
+
+You can access the Accelerator server using `accelerator` prefix like http://accelerator.192.168.64.50.nip.io when configuring `Acc Server Url` for the Accelerator VSCode Extension.
+
+You can test the access to the Accelerator server using:
+
+```
+curl http://accelerator.192.168.64.50.nip.io/api/about
+```
+
 ## Setup the developer namespace
 
 Follow the installtion instructions to [Set up developer namespaces to use installed packages](https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-set-up-namespaces.html)
@@ -209,4 +221,3 @@ subjects:
     name: default
 EOF
 ```
-
