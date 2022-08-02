@@ -8,9 +8,13 @@ You will need the `hyperkit` driver for macOS and `kvm2` driver for Linux. See t
 
 Install [Carvel tools](https://carvel.dev/#install).
 
-## Install TAP CLI
+## Install TAP CLI and VSCode Extensions
 
-See: https://docs-staging.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-install-tanzu-cli.html#install-or-update-the-tanzu-cli-and-plugins-3
+See: 
+
+- [ Install or update the Tanzu CLI and plug-ins](https://docs-staging.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-install-tanzu-cli)html#install-or-update-the-tanzu-cli-and-plugins-3
+- [Installing Tanzu Developer Tools for Visual Studio Code](https://docs-staging.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-vscode-extension-install.html)
+- [Application Accelerator Visual Studio Code extension - Installation](https://docs-staging.vmware.com/en/VMware-Tanzu-Application-Platform/1.2/tap/GUID-application-accelerator-vscode.html#installation-1)
 
 ## Create local minikube cluster
 
