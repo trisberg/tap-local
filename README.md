@@ -233,6 +233,8 @@ Open VSCode and open the `Settings` menu using keys `Ctrl ,` on Linux and `Comma
 - Scroll down to **Tanzu: Source Image** and enter the name of a repository to use for source images. I use `docker.io/trisberg/app-source`. 
 - Scroll down to **Tanzu-app-accelerator: Acc Server Url** and enter the URL for the accelerator server. This is the `shared.ingress_domain` specified in the `tap-local-values.yaml` prefiexed woth `http://accelerator.`. With my setup I use `http://accelerator.192.168.64.50.nip.io`.
 
+<img src="settings.png" alt="Settings" width="800"/>
+
 ## Create the first TAP application
 
 Click on the Tanzu icon in the navigation bar to the left and select the "Hello World" accelerator. For the `deploymentType` option select `TAP workload`.
