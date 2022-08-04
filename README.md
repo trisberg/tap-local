@@ -225,3 +225,32 @@ subjects:
     name: default
 EOF
 ```
+
+## Configure VSCode extensions
+
+Open VSCode and open the `Settings` menu using keys `Ctrl ,` on Linux and `Command ,` on macOS. In the `Serch settings` bar type in `Tanzu`.
+
+- Scroll down to **Tanzu: Source Image** and enter the name of a repository to use for source images. I use `docker.io/trisberg/app-source`. 
+- Scroll down to **Tanzu-app-accelerator: Acc Server Url** and enter the URL for the accelerator server. This is the `shared.ingress_domain` specified in the `tap-local-values.yaml` prefiexed woth `http://accelerator.`. With my setup I use `http://accelerator.192.168.64.50.nip.io`.
+
+## Create the first TAP application
+
+Click on the Tanzu icon in the navigation bar to the left and select the "Hello World" accelerator. For the `deploymentType` option select `TAP workload`.
+
+<img src="step1.png" alt="Step 1" width="800"/>
+
+Then click on **[Generate Project]** and pick a location for the generated project.
+
+<img src="step2.png" alt="Step 2" width="800"/>
+
+This should open up the generated project in a new window. Select the `config\workload.yaml` file.
+
+<img src="step3.png" alt="Step 3" width="800"/>
+
+You can now rihgt-click on the `config\workload.yaml` file and select `Tanzu: Apply Workload`. Tha should deploy the workload and open up a terminal where you can see the output from the deployment.
+
+<img src="step4.png" alt="Step 4" width="800"/>
+
+Once the build completes and the app start up you should be able to open the URL in the browser. The URL should be `http://hello-world.<namespace>.apps.` plus the `shared.ingress_domain`. For my deployment it was `http://hello-world.default.apps.192.168.64.50.nip.io`
+
+<img src="step5.png" alt="Step 5" width="800"/>
