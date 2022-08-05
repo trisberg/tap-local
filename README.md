@@ -249,7 +249,7 @@ This should open up the generated project in a new window. Select the `config\wo
 
 <img src="step3.png" alt="Step 3" width="800"/>
 
-You can now right-click on the `config\workload.yaml` file and select `Tanzu: Apply Workload`. That should deploy the workload and open up a terminal where you can see the output from the deployment.
+You can now right-click on the `config/workload.yaml` file and select `Tanzu: Apply Workload`. That should deploy the workload and open up a terminal where you can see the output from the deployment.
 
 <img src="step4.png" alt="Step 4" width="800"/>
 
