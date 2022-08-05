@@ -249,10 +249,10 @@ This should open up the generated project in a new window. Select the `config\wo
 
 <img src="step3.png" alt="Step 3" width="800"/>
 
-You can now rihgt-click on the `config\workload.yaml` file and select `Tanzu: Apply Workload`. Tha should deploy the workload and open up a terminal where you can see the output from the deployment.
+You can now right-click on the `config\workload.yaml` file and select `Tanzu: Apply Workload`. That should deploy the workload and open up a terminal where you can see the output from the deployment.
 
 <img src="step4.png" alt="Step 4" width="800"/>
 
-Once the build completes and the app start up you should be able to open the URL in the browser. The URL should be `http://hello-world.<namespace>.apps.` plus the `shared.ingress_domain`. For my deployment it was `http://hello-world.default.apps.192.168.64.50.nip.io`
+Once the build completes and the app starts up, you should be able to open the URL in the browser. The URL should be `http://hello-world.<namespace>.apps.` plus the `shared.ingress_domain`. For my deployment it was `http://hello-world.default.apps.192.168.64.50.nip.io`
 
 <img src="step5.png" alt="Step 5" width="800"/>
